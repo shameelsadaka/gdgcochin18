@@ -1,7 +1,26 @@
-$(document).ready(function(){
-	$(window).bind("scroll resize load",scrollPositionUpdate);
+$(window).bind("scroll resize load",scrollPositionUpdate);
 
-	$(document).on('click', 'a[href^="#"]', function (event) {
+$(document).ready(function(){
+
+	$(".people-list").click(function(){
+		$photo = $(this).find(".pic img").attr("src");
+		$name = $(this).find(".name").html();
+		$content = $(this).find(".data-hidden").html();
+
+		$(".profileOpener .pic img").attr("src",$photo);
+		$(".profileOpener .title").html($name);
+		$(".profileOpener .content-container").html($content);
+
+		$(".profileOpener").fadeIn(300);
+		
+		return false;
+	});
+	$(".profileOpener .closex").click(function(){
+		$(".profileOpener").fadeOut(300);
+		return false;
+	});
+
+	$(document).on('click', '.navigation a[href^="#"]', function (event) {
 	    event.preventDefault();
 
 	    $("header .navigation li.selected").removeClass("selected");
@@ -10,6 +29,8 @@ $(document).ready(function(){
 
 	    $('html, body').animate({scrollTop: Math.max(0, $($.attr(this, 'href')).offset().top - 64)}, 500);
 	});
+
+
 });
 function scrollPositionUpdate(){
 	var scrollPos = $(document).scrollTop();
@@ -21,9 +42,16 @@ function scrollPositionUpdate(){
         if(href == "#"){return;}
 
         var refElement = $(href);
-        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-            $('.navigation li').removeClass("selected");
-            $(this).closest("li").addClass("selected");
+        
+        var realScrollPos = scrollPos + 64;
+
+        if(refElement.length > 0){
+        	console.log(refElement);
+	        if (refElement.position().top <= realScrollPos && refElement.position().top + refElement.height() > realScrollPos) {
+	            $('.navigation li').removeClass("selected");
+	            $(this).closest("li").addClass("selected");
+	        }
+        	
         }
     });
 }

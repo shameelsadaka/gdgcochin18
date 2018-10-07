@@ -371,13 +371,21 @@ footer{
 
 
 
-
-
-
   .people-list{
     width: 100%;
     text-align: center;
     padding: 30px 0;
+    margin: 16px 0;
+    border:1px solid transparent;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+  }
+    .people-list.box{
+      box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    }
+  .people-list:hover{
+      border:1px solid #EEEEEE;
+      box-shadow: 0 2px 3px rgba(0,0,0,0.2);
   }
     .people-list a{
       text-decoration: none;
@@ -407,6 +415,23 @@ footer{
       font-size: 14px;
       line-height: 1.1;
     }
+    .people-list .short{
+      font-size: 16px;
+      line-height: 1.4;
+      padding: 15px;      
+      color:rgb(117, 117, 117);
+    }
+    .profile-content .social{
+      text-align: center;
+    }
+    .profile-content .social i{
+        font-size: 18px;
+        color: #DDDDDD;
+    }
+
+    .people-list .data-hidden{
+      display: none;
+    }
 
 .profileOpener{
   position: fixed;
@@ -417,4 +442,90 @@ footer{
   background: rgba(0,0,0,0.7);
   z-index: 9999;
 }
-.profileOpener{}
+  .profile-bg{
+    width: 720px;
+    height: 480px;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;left: 50%;
+    transform: translate(-50%,-50%);
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+  }
+    .profile-head{
+        width: 100%;
+        display: block;
+        height: 160px;
+        padding: 0 100px;
+        background: rgb(247, 247, 247);
+    }
+      .profile-head .pic{
+        width: 96px;
+        height: 96px;
+        display: inline-block;
+        float: left;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-top: 32px;
+      }
+        .profile-head .pic img{
+          width: 100%;
+          min-height: 100%;
+        }
+
+      .profile-head .title{
+        display: inline-block;
+        margin: 32px 16px;
+        height: 96px;
+        float: left;
+        font-size: 30px;
+        color: #333333;
+        font-weight: 400;
+        line-height: 96px;
+      }
+      .profile-head .closex{
+        color: #FFFFFF;
+        float: right;
+        position: relative;
+        left: 130px;
+        font-size: 20px;
+      }
+
+    .profile-content{
+        overflow-y: scroll;
+      flex-grow: 1;
+    }
+    .profile-content .content-container{
+        padding: 40px 100px;
+    }
+      .profile-content h3{
+        font-size: 18px;
+        line-height: 1.6; 
+      }
+      .profile-content p{
+        line-height: 1.5;
+        font-size: 15px;
+        margin: 20px 0;
+      }
+    .profile-content .social a{
+        font-size: 16px;
+        color: #666666;
+        margin: 5px;
+    }
+
+    @media (max-width: 720px) {
+      .profile-bg{
+        height: 100%;
+      }
+
+      .profile-head .closex{
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        color: #000000;
+        opacity: 0.6;
+      }
+    }
